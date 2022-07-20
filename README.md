@@ -7,3 +7,4 @@ The example ranges from downloading training data and training a CNN denoiser to
 |-- |--|--|--| 
 |Motion deblur|![](figs/degraded_motion.png) | ![](figs/pnp_motion.png) | ![](figs/image_motion.png) |
 |Inpainting|![](figs/degraded_inpainting.png) | ![](figs/pnp_inpainting.png) | ![](figs/image_inpainting.png) |
+|Super-resolution|![](figs/degraded_superres.png) | ![](figs/pnp_superres.png) | ![](figs/image_superres.png) |
