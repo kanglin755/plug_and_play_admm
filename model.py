@@ -1,4 +1,3 @@
-#@title Denoiser model
 """
 U-net implementation borrowed from https://github.com/facebookresearch/fastMRI/blob/main/fastmri/models/unet.py
 """
@@ -7,7 +6,7 @@ class Unet(nn.Module):
     PyTorch implementation of a U-Net model.
     O. Ronneberger, P. Fischer, and Thomas Brox. U-net: Convolutional networks
     for biomedical image segmentation. In International Conference on Medical
-    image computing and computer-assisted intervention, pages 234–241.
+    image computing and computer-assisted intervention, pages 234â€“241.
     Springer, 2015.
     """
 
