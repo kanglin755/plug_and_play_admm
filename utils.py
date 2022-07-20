@@ -1,5 +1,8 @@
 import torch
 import torch.nn as nn
+from torch.utils.data import Dataset
+import PIL.Image as Image
+import torchvision.transforms as pth_transforms
 
 def conv2d_from_kernel(kernel, channels, device, stride=1):
     """
@@ -33,3 +36,40 @@ def conv2d_from_kernel(kernel, channels, device, stride=1):
 def compute_psnr(img1, img2):
     mse = torch.mean((img1*255 - img2*255) ** 2)
     return 20 * torch.log10(255.0 / torch.sqrt(mse))
+
+class ImagenetDataset(Dataset):
+    def __init__(self, img_files, is_train=True):
+        self.files = img_files
+        self.is_train = is_train
+        self.train_transform = pth_transforms.Compose([      
+            pth_transforms.Resize(480),
+            pth_transforms.GaussianBlur(kernel_size=3, sigma=1),
+            pth_transforms.RandomCrop(128),
+            pth_transforms.ToTensor(),             
+            ])
+
+        self.test_transform = pth_transforms.Compose([      
+            pth_transforms.Resize(480),
+            pth_transforms.GaussianBlur(kernel_size=3, sigma=1),
+            pth_transforms.CenterCrop(128),
+            pth_transforms.ToTensor(),             
+            ])
+
+    def __len__(self, ):
+        
+        return len(self.files)
+    
+    def __getitem__(self, idx):
+        image = Image.open(self.files[idx]).convert("RGB")
+        
+        if self.is_train:
+            image = self.train_transform(image)
+        else:
+            image = self.test_transform(image)
+        
+        sample = dict()
+        noise = torch.rand(1)*0.2
+        sample['noisy'] = image + noise*torch.randn_like(image)
+        sample['target'] = image
+
+        return sample
