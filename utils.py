@@ -37,6 +37,13 @@ def compute_psnr(img1, img2):
     mse = torch.mean((img1*255 - img2*255) ** 2)
     return 20 * torch.log10(255.0 / torch.sqrt(mse))
 
+def myplot(degraded, reconstruction, target):
+    plt.figure(figsize=(10,5))
+    plt.subplot(1,3,1); plt.imshow(degraded.permute(0,2,3,1).squeeze().cpu()); plt.title('Degraded')
+    plt.subplot(1,3,2); plt.imshow(reconstruction.permute(0,2,3,1).squeeze().cpu()); plt.title('Reconstruction')
+    plt.subplot(1,3,3); plt.imshow(target.permute(0,2,3,1).squeeze().cpu()); plt.title('Ground truth')
+    plt.show()
+    
 class ImagenetDataset(Dataset):
     def __init__(self, img_files, is_train=True):
         self.files = img_files
