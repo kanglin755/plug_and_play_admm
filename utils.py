@@ -3,6 +3,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset
 import PIL.Image as Image
 import torchvision.transforms as pth_transforms
+import matplotlib.pyplot as plt
 
 def conv2d_from_kernel(kernel, channels, device, stride=1):
     """
