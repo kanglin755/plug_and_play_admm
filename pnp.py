@@ -1,9 +1,11 @@
+import torch
+
 def pnp_admm(
         measurements, forward, forward_adjoint, denoiser, 
         step_size=1e-4, num_iter=50, max_cgiter=100, cg_tol=1e-7
     ):
     """
-    ADMM plug and play. 
+    ADMM plug and play
     """
     x_h =  forward_adjoint(measurements)
 
