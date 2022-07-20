@@ -12,9 +12,9 @@ def conv2d_from_kernel(kernel, channels, device, stride=1):
         kernel: 2D kernel
         channels: number of image channels
     """
+    kernel_size = kernel.shape
     kernel = kernel/kernel.sum()
     kernel = kernel.repeat(channels, 1, 1, 1)
-
     filter = nn.Conv2d(
         in_channels=channels, out_channels=channels,
         kernel_size=kernel_size, groups=channels, bias=False, stride=stride,
