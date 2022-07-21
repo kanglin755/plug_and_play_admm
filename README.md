@@ -1,7 +1,9 @@
-# ADMM Plug and Play
-This repository provides a full Pytorch example for ADMM plug and play in the context of image restoration. <br>
-The example ranges from downloading training data and training a CNN denoiser to plugging in the denoiser into ADMM plug and play for solving a motion deblur, inpainting and super-resolution example.  <br>
-[View in Google Colab](https://colab.research.google.com/drive/1XHGdKA-eTvOUwto2jA89z1SEfLTdR-jN?usp=sharing)
+# Plug and Play ADMM
+This repository provides a simple Pytorch implementation of plug and play ADMM with examples. <br> 
+
+The notebook `pnp_admm_example.ipynb` contains a example in which a pretrained convnet gaussian denoiser is downloaded (120MB) and plugged into ADMM for solving a motion deblur, inpainting, and super-resolution problem. You can also [view in Google Colab](https://colab.research.google.com/drive/1XHGdKA-eTvOUwto2jA89z1SEfLTdR-jN?usp=sharing). <br>
+
+The notebook `denoiser_training.ipynb` contains code for training a denoiser from scratch using a subset of ImageNet as trainingset. The trainingset will be download automatically (250MB). You can also [view in Google Colab](https://colab.research.google.com/drive/1XHGdKA-eTvOUwto2jA89z1SEfLTdR-jN?usp=sharing).
 
 || Degraded | PnP output | Ground truth | 
 |-- |--|--|--| 
